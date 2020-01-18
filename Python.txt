@@ -1,0 +1,105 @@
+Notes:
+
+1:  Interpreter vs Compiler-
+	An interpreter translates "high-level instructions" into an "intermediate form", which it then executes. 
+		In contrast, a compiler translates high-level instructions directly into machine language. 
+		Compiled programs generally run faster than interpreted programs. 
+		The advantage of an interpreter, however, is that it does not need to go through the compilation 
+		stage during which machine instructions are generated. 
+		This process can be time-consuming if the program is long. 
+		The interpreter, on the other hand, can immediately execute high-level programs.
+
+2:   Source Code Encoding-
+	By default, Python source files are treated as encoded in "UTF-8". 
+		In that encoding, characters of most languages in the world can be used simultaneously in string literals, 
+		identifiers and comments — although the standard library only uses ASCII characters for identifiers, 
+		a convention that any portable code should follow. To display all these characters properly, 
+		your editor must recognize that the file is "UTF-8", and it must use a font that supports 
+		all the characters in the file.
+		
+	"UTF-8" -   (8-bit Unicode Transformation Format) 
+				UTF-8 is a variable width character encoding capable of encoding all 1,112,064 valid code points in
+				Unicode using one to four 8-bit bytes. 
+				The encoding is defined by the "Unicode Standard", and was originally designed by "Ken Thompson" and "Rob Pike"
+
+3:  Redeclaration of variable is possible.
+	Concatenate of variables with diffrent data types is not possible.
+	Define a Global variable is possible in funcntion using "global" keyword.
+	Delete a variable is possible with "del" keyword.
+	
+
+4: In python, there is not function prototypes like in c/c++. So all fucntions must be defined before any executable code. 
+	Eg,  the call to main() (executable code), should be the last line of the file. 
+	if __name__ == "__main__":
+		main()
+
+
+5:	Open() fucntion is used to open files with given parameters
+		The open() function takes two parameters; filename, and mode.
+		There are four different methods (modes) for opening a file:
+
+		"r" - Read - Default value. Opens a file for reading, error if the file does not exist
+		"a" - Append - Opens a file for appending, creates the file if it does not exist
+		"w" - Write - Opens a file for writing, creates the file if it does not exist
+		"x" - Create - Creates the specified file, returns an error if the file exists
+
+		In addition you can specify if the file should be handled as binary or text mode
+
+		"t" - Text - Default value. Text mode
+		"b" - Binary - Binary mode (e.g. images)
+
+6:	How to check If File Exists
+		First import Libraries-		
+		Eg: import os / import pathlib
+
+		os.path.exists()		-	Returns True if path or directory does exists.
+		os.path.isfile()		-	Returns True if path is File.
+		os.path.isdir()			-	Returns True if path is Directory.
+		pathlib.Path.exists() 	-	Returns True if path or directory does exists. (In Python 3.4 and above versions)
+
+7:	Delete file / folder
+
+		if os.path.exists("demofile.txt"):
+	  		os.remove("demofile.txt")		# delete file
+
+		os.rmdir("myfolder") 				# delete folder
+
+8:	Data Types in pyhton
+		Text Type:		str
+		Numeric Types:	int, float, complex
+		Sequence Types:	list, tuple, range
+		Mapping Type:	dict
+		Set Types:		set, frozenset
+		Boolean Type:	bool
+		Binary Types:	bytes, bytearray, memoryview
+
+		=> Get data types:	"print(type(x))"
+
+		Example:
+														Data Type
+		x = "Hello World"-------------------------------str	
+		x = 20------------------------------------------int	
+		x = 20.5----------------------------------------float	
+		x = 1j------------------------------------------complex	
+		x = ["apple", "banana", "cherry"]---------------list	
+		x = ("apple", "banana", "cherry")---------------tuple	
+		x = range(6)------------------------------------range	
+		x = {"name" : "John", "age" : 36}---------------dict	
+		x = {"apple", "banana", "cherry"}---------------set	
+		x = frozenset({"apple", "banana", "cherry"})----frozenset	
+		x = True----------------------------------------bool	
+		x = b"Hello"------------------------------------bytes	
+		x = bytearray(5)--------------------------------bytearray	
+		x = memoryview(bytes(5))------------------------memoryview
+
+
+Troubleshoots:
+--------------
+1. How In sublime set Pytho3 as current Python compiler:
+	Create File with "sublime ~/.config/sublime-text-3/Packages/User/Python3.sublime-build"
+	  Copy below content in created File (Python3.sublime-build):
+	  {
+	   "cmd": ["/usr/bin/python3", "-u", "$file"],
+	   "file_regex": "^[ ]File \"(...?)\", line ([0-9]*)",
+	   "selector": "source.python"
+	  } 
